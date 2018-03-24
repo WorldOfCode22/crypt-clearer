@@ -1,5 +1,6 @@
 const express = require('express')
 const Account = require('../db-models/account')
+const User = require('../db-models/user')
 const router = express.Router()
 const passport = require('passport')
 router.post('/login', passport.authenticate('local'),
@@ -16,7 +17,15 @@ router.post('/register',
           res.json({error: 'An error occured during registration'})
         }
         passport.authenticate('local')(req, res,
-          () => { console.log('User Registered'); res.json({done: 'User Added'}) }
+          () => {
+            new User({
+              username: req.body.username,
+              timePlayed: 0
+            }).save().then(
+              (doc) => { res.json({done: 'User Registered'}) },
+              err => { throw new Error(err) }
+            )
+          }
         )
       }
     )
