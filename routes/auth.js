@@ -1,11 +1,23 @@
+require('dotenv')
 const express = require('express')
 const Account = require('../db-models/account')
 const User = require('../db-models/user')
 const router = express.Router()
 const passport = require('passport')
+
+router.get('/login',
+  (req, res) => {
+    if (process.env.MODE) {
+      res.redirect('http://localhost:3000')
+    }
+  }
+)
 router.post('/login', passport.authenticate('local'),
   (req, res) => {
-    res.json({message: 'loged in'})
+    // console.log(process.env.MODE)
+    if (process.env.MODE === 'DEV') {
+      res.redirect('http://localhost:3000/')
+    }
   })
 
 router.post('/register',
