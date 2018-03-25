@@ -3,7 +3,8 @@ import {Navbar, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {loginClicked} from '../../redux-actions/'
-class navbar extends Component {
+import {withRouter} from 'react-router'
+class MyNavbar extends Component {
   render () {
     return (
       <div>
@@ -21,6 +22,7 @@ class navbar extends Component {
 }
 
 function matchPropsToState (state) {
+  console.log(state)
   return {
     login: state.login
   }
@@ -29,4 +31,4 @@ function matchPropsToState (state) {
 function matchDispatchToProps (dispatch) {
   return bindActionCreators({loginClicked: loginClicked}, dispatch)
 }
-export default connect(matchPropsToState, matchDispatchToProps)(navbar)
+export default withRouter(connect(matchPropsToState, matchDispatchToProps)(MyNavbar))

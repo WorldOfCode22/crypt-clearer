@@ -3,11 +3,12 @@ export const LoginReducer = (state = null, action) => {
     dropDown: false
   }
   if (state) {
+    console.log(state)
     switch (action.type) {
       case 'LOGIN_CLICKED':
         let newState = state
         newState.dropDown = !newState.dropDown
-        return newState
+        return Object.assign({}, newState)
       default:
         return action
     }
