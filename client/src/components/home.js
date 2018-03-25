@@ -1,8 +1,11 @@
 import React from 'react'
-// import {Container, Row, Col} from 'reactstrap'
+import {Container} from 'reactstrap'
+import Navbar from './core/navbar'
 const home = () => {
   return (
-    <h1>Welcome home</h1>
+    <Container>
+      <Navbar />
+    </Container>
   )
 }
 
