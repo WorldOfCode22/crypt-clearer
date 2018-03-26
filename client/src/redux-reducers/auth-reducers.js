@@ -7,8 +7,8 @@ export const LoginReducer = (state = null, action) => {
     switch (action.type) {
       case 'LOGIN_CLICKED':
         return {...state, dropDown: !state.dropDown}
-      case 'APP_START_FUFILLED':
-        return 'hello'
+      case 'APP_START_FULFILLED':
+        return {...state, isLogedIn: true}
       default:
         return state
     }
