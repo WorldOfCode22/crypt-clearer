@@ -7,7 +7,14 @@ const passport = require('passport')
 router.get('/checkUser',
   (req, res) => {
     if (req.user) {
-      res.json({user: req.user})
+      User.findOne({username: req.user.username})
+        .then(
+          (doc) => { res.json({user: doc}) },
+          err => { throw new Error(err) }
+        )
+        .catch(
+          err => { console.log(err); res.json({error: 'Error gathering user from database'}) }
+        )
     }
   }
 )
