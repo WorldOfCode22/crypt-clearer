@@ -1,10 +1,13 @@
-const {GraphQLObjectType, GraphQLString} = require('graphql')
+const Characters = require('./character')
+const {GraphQLObjectType, GraphQLString, GraphQLList} = require('graphql')
 
-exports = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
   name: 'User',
   fields: {
-    Username: {type: GraphQLString},
-    DateJoined: {type: GraphQLString},
-    TimePlayed: {type: GraphQLString}
+    id: {type: GraphQLString},
+    username: {type: GraphQLString},
+    dateJoined: {type: GraphQLString},
+    timePlayed: {type: GraphQLString},
+    characters: {type: GraphQLList(Characters)}
   }
 })

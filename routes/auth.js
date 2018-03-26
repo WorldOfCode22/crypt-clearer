@@ -30,13 +30,16 @@ router.post('/register',
         }
         passport.authenticate('local')(req, res,
           () => {
-            new User({
-              username: req.body.username,
-              timePlayed: 0
-            }).save().then(
-              (doc) => { res.json({done: 'User Registered'}) },
-              err => { throw new Error(err) }
-            )
+            if (account) {
+              new User({
+                username: req.body.username,
+                timePlayed: 0,
+                characters: []
+              }).save().then(
+                (doc) => { res.json({done: 'User Registered'}) },
+                err => { throw new Error(err) }
+              )
+            }
           }
         )
       }
