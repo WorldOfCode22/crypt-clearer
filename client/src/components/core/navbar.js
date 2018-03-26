@@ -5,6 +5,18 @@ import {bindActionCreators} from 'redux'
 import {loginClicked} from '../../redux-actions/'
 import {withRouter} from 'react-router'
 class MyNavbar extends Component {
+  getNavItem () {
+    console.log(this.props.login)
+    if (this.props.login.isLogedIn) {
+      return (
+        <NavLink href='/game'>Enter Game</NavLink>
+      )
+    } else {
+      return (
+        <NavLink onClick={() => { this.props.loginClicked(this.props.login) }}>Login</NavLink>
+      )
+    }
+  }
   render () {
     return (
       <div>
@@ -12,7 +24,7 @@ class MyNavbar extends Component {
           <NavbarBrand>Crypt Clearer</NavbarBrand>
           <Nav className='ml-auto' navbar>
             <NavItem>
-              <NavLink onClick={() => { this.props.loginClicked(this.props.login) }}>Login</NavLink>
+              {this.getNavItem()}
             </NavItem>
           </Nav>
         </Navbar>

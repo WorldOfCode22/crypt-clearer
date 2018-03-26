@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 class GameMenu extends Component {
   render () {
     return (
@@ -14,4 +15,4 @@ function matchPropsToState (state) {
     user: state.user
   }
 }
-export default connect(matchPropsToState)(GameMenu)
+export default withRouter(connect(matchPropsToState)(GameMenu))
