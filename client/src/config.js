@@ -7,3 +7,10 @@ export const connectionString = () => {
     return ''
   }
 }
+
+export const fetchObject = (method) => {
+  return {
+    method,
+    credentials: 'include'
+  }
+}

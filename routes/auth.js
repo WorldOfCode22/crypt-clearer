@@ -4,7 +4,13 @@ const Account = require('../db-models/account')
 const User = require('../db-models/user')
 const router = express.Router()
 const passport = require('passport')
-
+router.get('/checkUser',
+  (req, res) => {
+    if (req.user) {
+      res.json({user: req.user})
+    }
+  }
+)
 router.get('/login',
   (req, res) => {
     if (process.env.MODE) {

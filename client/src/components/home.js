@@ -23,7 +23,6 @@ class Home extends Component {
   }
 }
 function matchPropsToState (state) {
-  console.log(state)
   return {
     login: state.login
   }

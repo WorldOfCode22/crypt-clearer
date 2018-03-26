@@ -24,6 +24,16 @@ app.use('/graph', expressGraphQL({
   graphiql: true,
   schema
 }))
+
+if (process.env.MODE === 'DEV') {
+  app.use(
+    (req, res, next) => {
+      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+      res.setHeader('Access-Control-Allow-Credentials', true)
+      next()
+    }
+  )
+}
 app.use('/auth', authRoutes)
 
 mongoose.connect(process.env.MONGO_URI)

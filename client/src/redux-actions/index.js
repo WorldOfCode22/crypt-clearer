@@ -4,3 +4,9 @@ export const loginClicked = (login) => {
     payload: login
   }
 }
+
+export const appStart = () => {
+  return {
+    type: 'APP_START'
+  }
+}

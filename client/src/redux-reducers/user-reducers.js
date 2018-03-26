@@ -1,16 +1,9 @@
 import {connectionString, fetchObject} from '../config'
-export const LoginReducer = (state = null, action) => {
+export const UserReducer = (state = null, action) => {
   let base = {
-    dropDown: false,
-    isLogedIn: false
   }
   if (state) {
-    console.log(state)
     switch (action.type) {
-      case 'LOGIN_CLICKED':
-        let newState = state
-        newState.dropDown = !newState.dropDown
-        return Object.assign({}, newState)
       case 'APP_START':
         global.fetch(connectionString() + '/auth/checkUser', fetchObject('GET'))
           .then(
@@ -21,8 +14,8 @@ export const LoginReducer = (state = null, action) => {
             (data) => {
               if (data) {
                 let newState = state
-                newState.isLogedIn = true
-                return Object.assign({}, newState)
+                console.log(data)
+                return Object.assign(newState, data.user)
               }
             },
             err => { throw new Error(err) }
