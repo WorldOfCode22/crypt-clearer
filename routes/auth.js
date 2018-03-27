@@ -4,6 +4,17 @@ const Account = require('../db-models/account')
 const User = require('../db-models/user')
 const router = express.Router()
 const passport = require('passport')
+
+router.get('/logout',
+  (req, res) => {
+    req.logout()
+    if (process.env.MODE === 'DEV') {
+      res.redirect('http://localhost:3000/')
+    } else {
+      res.redirect('/')
+    }
+  }
+)
 router.get('/checkUser',
   (req, res) => {
     if (req.user) {

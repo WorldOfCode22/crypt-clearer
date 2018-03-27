@@ -3,13 +3,14 @@ import {Navbar, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {loginClicked} from '../../redux-actions/'
-import {withRouter} from 'react-router'
+import {withRouter, Link} from 'react-router-dom'
+import {connectionString} from '../../config'
 class MyNavbar extends Component {
   getNavItem () {
     console.log(this.props.login)
     if (this.props.login.isLogedIn) {
       return (
-        <NavLink href='/game'>Enter Game</NavLink>
+        <NavLink tag={Link} to='/game'>Enter Game</NavLink>
       )
     } else {
       return (
@@ -25,6 +26,9 @@ class MyNavbar extends Component {
           <Nav className='ml-auto' navbar>
             <NavItem>
               {this.getNavItem()}
+            </NavItem>
+            <NavItem>
+              <NavLink href={`${connectionString()}/auth/logout`}>Logout</NavLink>
             </NavItem>
           </Nav>
         </Navbar>
