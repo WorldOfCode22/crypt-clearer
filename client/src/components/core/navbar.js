@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Navbar, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {loginClicked} from '../../redux-actions/'
+import {loginClicked, enterGame} from '../../redux-actions/'
 import {withRouter, Link} from 'react-router-dom'
 import {connectionString} from '../../config'
 class MyNavbar extends Component {
@@ -28,8 +28,19 @@ class MyNavbar extends Component {
     if ((this.props.game.location === 'HOME') && (this.props.login.isLoggedIn)) {
       return (
         <NavItem>
-          <NavLink tag={Link} to='/game'>Enter Game</NavLink>
+          <NavLink tag={Link} to='/game' onClick={() => { this.props.enterGame() }}>Enter Game</NavLink>
         </NavItem>
+      )
+    } else if ((this.props.game.location === 'MAIN_MENU')) {
+      return (
+        <Nav>
+          <NavItem>
+            <NavLink tag={Link} to='/game/battle'>Battle</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to='/game/newCharacter'>New Character</NavLink>
+          </NavItem>
+        </Nav>
       )
     }
   }
@@ -57,6 +68,6 @@ function matchPropsToState (state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators({loginClicked: loginClicked}, dispatch)
+  return bindActionCreators({loginClicked, enterGame}, dispatch)
 }
 export default withRouter(connect(matchPropsToState, matchDispatchToProps)(MyNavbar))

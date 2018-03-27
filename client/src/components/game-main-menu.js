@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Redirect} from 'react-router-dom'
-
+import {Container} from 'reactstrap'
+import NavBar from './core/navbar'
 class GameMenu extends Component {
   checkLogin () {
     console.log(this.props)
@@ -15,9 +16,10 @@ class GameMenu extends Component {
   }
   render () {
     return (
-      <div>
+      <Container>
         {this.checkLogin()}
-      </div>
+        <NavBar />
+      </Container>
     )
   }
 }
