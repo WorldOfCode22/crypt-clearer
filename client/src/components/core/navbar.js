@@ -6,15 +6,30 @@ import {loginClicked} from '../../redux-actions/'
 import {withRouter, Link} from 'react-router-dom'
 import {connectionString} from '../../config'
 class MyNavbar extends Component {
-  getNavItem () {
-    console.log(this.props.login)
-    if (this.props.login.isLogedIn) {
+  getLoginLinks () {
+    return (
+      <NavItem>
+        {this.logInOrOut()}
+      </NavItem>
+    )
+  }
+  logInOrOut () {
+    if (this.props.login.isLoggedIn) {
       return (
-        <NavLink tag={Link} to='/game'>Enter Game</NavLink>
+        <NavLink href={connectionString() + '/auth/logout'}>Logout</NavLink>
       )
     } else {
       return (
         <NavLink onClick={() => { this.props.loginClicked(this.props.login) }}>Login</NavLink>
+      )
+    }
+  }
+  getGameLinks () {
+    if ((this.props.game.location === 'HOME') && (this.props.login.isLoggedIn)) {
+      return (
+        <NavItem>
+          <NavLink tag={Link} to='/game'>Enter Game</NavLink>
+        </NavItem>
       )
     }
   }
@@ -24,12 +39,8 @@ class MyNavbar extends Component {
         <Navbar color='faded' light expand='md'>
           <NavbarBrand>Crypt Clearer</NavbarBrand>
           <Nav className='ml-auto' navbar>
-            <NavItem>
-              {this.getNavItem()}
-            </NavItem>
-            <NavItem>
-              <NavLink href={`${connectionString()}/auth/logout`}>Logout</NavLink>
-            </NavItem>
+            {this.getGameLinks()}
+            {this.getLoginLinks()}
           </Nav>
         </Navbar>
       </div>
@@ -40,7 +51,8 @@ class MyNavbar extends Component {
 function matchPropsToState (state) {
   console.log(state)
   return {
-    login: state.login
+    login: state.login,
+    game: state.game
   }
 }
 

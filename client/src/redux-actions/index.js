@@ -20,3 +20,10 @@ export const appStart = () => {
     }
   }
 }
+
+export const enterGame = () => {
+  return {
+    type: 'ENTER_GAME',
+    payload: 'ENTER_GAME'
+  }
+}

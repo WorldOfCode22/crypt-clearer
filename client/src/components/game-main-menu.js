@@ -1,14 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
+
 class GameMenu extends Component {
   checkLogin () {
     console.log(this.props)
     if (this.props.user.username) {
-      return (<h1>Hello</h1>)
+
     } else {
       return (
-        <Link to='/' />
+        <Redirect to='/' />
       )
     }
   }
