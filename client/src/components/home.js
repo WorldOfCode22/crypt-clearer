@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Container} from 'reactstrap'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+// import {withRouter} from 'react-router-dom'
 import Navbar from './core/navbar'
 import Login from './core/login'
 class Home extends Component {
@@ -27,4 +27,4 @@ function matchPropsToState (state) {
     login: state.login
   }
 }
-export default withRouter(connect(matchPropsToState)(Home))
+export default connect(matchPropsToState)(Home)

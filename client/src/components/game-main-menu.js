@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+// import {withRouter} from 'react-router-dom'
 import {Container} from 'reactstrap'
 import NavBar from './core/navbar'
 // import AuthController from './core/auth-controller'
@@ -19,4 +19,4 @@ function matchPropsToState (state) {
     user: state.user
   }
 }
-export default withRouter(connect(matchPropsToState)(GameMenu))
+export default connect(matchPropsToState)(GameMenu)

@@ -4,13 +4,13 @@ import {Route, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 const AuthRoute = ({component: Component, ...rest}) => (
   <Route {...rest} render={(props) => (
-    props.user ? <Component {...props} /> : <Redirect to='/' />
+    props.login.isLoggedIn ? <Component {...props} /> : <Redirect to='/' />
   )} />
 )
 
 function matchPropsToState (state) {
   return {
-    user: state.user
+    login: state.login
   }
 }
 export default connect(matchPropsToState)(AuthRoute)
