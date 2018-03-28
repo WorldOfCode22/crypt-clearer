@@ -8,13 +8,13 @@ const StatEditLine = (props) => (
         <h5>{props.statHeader}</h5>
       </Col>
       <Col>
-        <Button>Less</Button>
+        <Button onClick={() => { props.decrementFunction() }}>Less</Button>
       </Col>
       <Col>
         <h5>{props.stat}</h5>
       </Col>
       <Col>
-        <Button>Plus</Button>
+        <Button onClick={() => { props.incrementFunction() }}>Plus</Button>
       </Col>
     </Row>
   </Container>

@@ -34,3 +34,23 @@ export const enterNewCharacter = () => {
     payload: 'ENTER_NEW_CHARACTER'
   }
 }
+
+export const attrIncrement = (attr, increment) => {
+  return {
+    type: 'ATTR_INCREMENT',
+    payload: {
+      attr,
+      increment
+    }
+  }
+}
+
+export const attrDecrement = (attr, decrement) => {
+  return {
+    type: 'ATTR_DECREMENT',
+    payload: {
+      attr,
+      decrement
+    }
+  }
+}
