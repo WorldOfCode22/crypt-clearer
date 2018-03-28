@@ -6,6 +6,8 @@ export const GameReducers = (state = null, action) => {
         return {...state, location: 'HOME'}
       case 'ENTER_GAME':
         return {...state, location: 'MAIN_MENU'}
+      case 'ENTER_NEW_CHARACTER':
+        return {...state, location: 'NEW_CHARACTER'}
       default:
         return state
     }

@@ -27,3 +27,10 @@ export const enterGame = () => {
     payload: 'ENTER_GAME'
   }
 }
+
+export const enterNewCharacter = () => {
+  return {
+    type: 'ENTER_NEW_CHARACTER',
+    payload: 'ENTER_NEW_CHARACTER'
+  }
+}

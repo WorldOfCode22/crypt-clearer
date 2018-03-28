@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Navbar, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {loginClicked, enterGame} from '../../redux-actions/'
+import {loginClicked, enterGame, enterNewCharacter} from '../../redux-actions/'
 // import {withRouter, Link} from 'react-router-dom'
 import {connectionString} from '../../config'
 class MyNavbar extends Component {
@@ -38,7 +38,7 @@ class MyNavbar extends Component {
             <NavLink>Battle</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>New Character</NavLink>
+            <NavLink onClick={() => { this.props.enterNewCharacter() }}>New Character</NavLink>
           </NavItem>
         </Nav>
       )
@@ -68,6 +68,6 @@ function matchPropsToState (state) {
 }
 
 function matchDispatchToProps (dispatch) {
-  return bindActionCreators({loginClicked, enterGame}, dispatch)
+  return bindActionCreators({loginClicked, enterGame, enterNewCharacter}, dispatch)
 }
 export default connect(matchPropsToState, matchDispatchToProps)(MyNavbar)
