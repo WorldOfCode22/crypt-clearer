@@ -1,23 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {Container} from 'reactstrap'
 import NavBar from './core/navbar'
+// import AuthController from './core/auth-controller'
 class GameMenu extends Component {
-  checkLogin () {
-    console.log(this.props)
-    if (this.props.user.username) {
-
-    } else {
-      return (
-        <Redirect to='/' />
-      )
-    }
-  }
   render () {
     return (
       <Container>
-        {this.checkLogin()}
         <NavBar />
       </Container>
     )

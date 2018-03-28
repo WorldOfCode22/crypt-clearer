@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import AuthRoute from './components/core/auth-route'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {appStart} from './redux-actions'
@@ -15,8 +16,8 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/game' component={GameMainMenu} />
-          <Route exact path='/game/newCharacter' component={NewCharacter} />
+          <AuthRoute exact path='/game' component={GameMainMenu} />
+          <AuthRoute exact path='/game/newCharacter' component={NewCharacter} />
         </Switch>
       </BrowserRouter>
     )
